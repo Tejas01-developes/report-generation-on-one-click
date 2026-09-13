@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model students {
+id String   @id @default(uuid())
+rollNo Int @unique
+firstName String
+lastName String
+class  String   
+section  String
+phoneNo   String
+english     Int      @default(0)
+  maths       Int      @default(0)
+  hindi       Int      @default(0)
+  gujarati    Int      @default(0)
+  computer    Int      @default(0)
+  ss          Int      @default(0)
+  science     Int      @default(0)
+totalMarks  Int?
+  grade       String?
+  isPass      Boolean?
+  fileUrl    String?
+createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  
+@@map("students")
+}
